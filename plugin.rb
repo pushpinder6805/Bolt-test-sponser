@@ -11,6 +11,7 @@ enabled_site_setting :sponsored_posts_enabled
 PLUGIN_NAME ||= "discourse-sponsored-posts".freeze
 
 register_asset "stylesheets/common/sponsored.scss"
+register_asset "javascripts/discourse/initializers/add-promote-button.js", :client_side
 
 after_initialize do
   # Load models and services
