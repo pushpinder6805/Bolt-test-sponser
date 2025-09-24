@@ -62,7 +62,13 @@ after_initialize do
   end
 end
 
-register_content_security_policy do |policy|
-  policy.script_src :self, "https://js.stripe.com", "https://www.paypal.com"
-  policy.connect_src :self, "https://api.stripe.com", "https://api.paypal.com", "https://api-m.sandbox.paypal.com"
+register_asset_filter do |type, request, assets|
+  if type == :script
+    assets << "https://js.stripe.com"
+    assets << "https://www.paypal.com"
+  elsif type == :connect
+    assets << "https://api.stripe.com"
+    assets << "https://api.paypal.com"
+    assets << "https://api-m.sandbox.paypal.com"
+  end
 end
