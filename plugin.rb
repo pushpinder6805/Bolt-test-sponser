@@ -62,11 +62,7 @@ after_initialize do
   end
 end
 
-# ✅ Updated CSP block for Stripe & PayPal
-register_asset_filter do |csp|
-  csp.append("script_src", "https://js.stripe.com")
-  csp.append("script_src", "https://www.paypal.com")
-  csp.append("connect_src", "https://api.stripe.com")
-  csp.append("connect_src", "https://api.paypal.com")
-  csp.append("connect_src", "https://api-m.sandbox.paypal.com")
+register_content_security_policy do |policy|
+  policy.script_src :self, "https://js.stripe.com", "https://www.paypal.com"
+  policy.connect_src :self, "https://api.stripe.com", "https://api.paypal.com", "https://api-m.sandbox.paypal.com"
 end
