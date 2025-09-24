@@ -1,0 +1,19 @@
+en:
+  js:
+    sponsored:
+      promote: "Promote this post"
+      label_text: "Sponsored"
+      tooltip: "Why am I seeing this?"
+      modal_title: "Sponsor This Post"
+      post_title: "Post to sponsor:"
+      select_duration: "Select sponsorship duration:"
+      select_provider: "Select payment method:"
+      duration_days:
+        one: "%{count} day"
+        other: "%{count} days"
+      moderation_notice: "Your sponsored post will be reviewed by moderators before going live."
+      sponsor_post: "Sponsor Post"
+      processing: "Processing..."
+      submitted_for_approval: "Your sponsored post has been submitted for approval."
+      activated: "Your post is now sponsored!"
+      error: "An error occurred while processing your request."

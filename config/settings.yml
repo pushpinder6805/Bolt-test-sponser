@@ -1,0 +1,128 @@
+plugins:
+  sponsored_posts_enabled:
+    default: true
+    client: true
+
+  # Payments
+  sponsored_payments_enabled:
+    default: true
+    client: true
+
+  sponsored_use_stripe:
+    default: true
+    client: true
+
+  sponsored_use_paypal:
+    default: true
+    client: true
+
+  # Stripe
+  sponsored_stripe_publishable_key:
+    default: ""
+    client: true
+
+  sponsored_stripe_secret_key:
+    default: ""
+
+  sponsored_stripe_currency:
+    default: "USD"
+    client: true
+
+  # PayPal
+  sponsored_paypal_client_id:
+    default: ""
+    client: true
+
+  sponsored_paypal_secret:
+    default: ""
+
+  sponsored_paypal_env:
+    default: "sandbox"
+    client: true
+    choices:
+      - "sandbox"
+      - "live"
+
+  sponsored_paypal_currency:
+    default: "USD"
+    client: true
+
+  # Business info
+  sponsored_business_name:
+    default: ""
+
+  sponsored_business_address:
+    default: ""
+
+  sponsored_support_email:
+    default: ""
+
+  # Policy
+  sponsored_allowed_trust_levels:
+    default: "0|1|2|3|4"
+    type: list
+    client: true
+
+  sponsored_allowed_groups:
+    default: ""
+    type: list
+    client: true
+
+  sponsored_min_account_age_days:
+    default: 0
+    client: true
+
+  sponsored_require_moderation:
+    default: false
+    client: true
+
+  # Durations
+  sponsored_durations_days:
+    default: "3|7|30"
+    type: list
+    client: true
+
+  # Placement
+  sponsored_interval_n:
+    default: 15
+    client: true
+
+  sponsored_max_in_suggested:
+    default: 1
+    client: true
+
+  sponsored_max_active_per_user:
+    default: 2
+    client: true
+
+  # Branding
+  sponsored_label_text:
+    default: "Sponsored"
+    client: true
+
+  sponsored_label_tooltip_url:
+    default: "/tos"
+    client: true
+
+  # Notifications
+  sponsored_notify_admin_group_names:
+    default: "admins|staff"
+
+  sponsored_notify_email_enabled:
+    default: true
+
+  # Analytics
+  sponsored_stats_windows:
+    default: "7|30"
+    type: list
+    client: true
+
+  sponsored_export_formats:
+    default: "csv|json"
+    type: list
+
+  # Limits and geo
+  sponsored_geo_restrictions:
+    default: ""
+    type: list
+    client: true

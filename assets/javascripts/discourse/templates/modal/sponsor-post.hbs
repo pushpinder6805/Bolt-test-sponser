@@ -1,0 +1,61 @@
+{{#d-modal-body title="sponsored.modal_title"}}
+  <div class="sponsor-post-modal">
+    <div class="sponsor-post-info">
+      <h4>{{i18n "sponsored.post_title"}}</h4>
+      <p>{{this.model.post.excerpt}}</p>
+    </div>
+
+    <div class="sponsor-options">
+      <div class="duration-selection">
+        <h4>{{i18n "sponsored.select_duration"}}</h4>
+        <div class="duration-buttons">
+          {{#each this.availableDurations as |duration|}}
+            <button 
+              class="btn {{if (eq this.selectedDuration duration.value) 'btn-primary' 'btn-default'}}"
+              {{on "click" (fn this.selectDuration duration.value)}}
+            >
+              {{duration.label}}
+            </button>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="provider-selection">
+        <h4>{{i18n "sponsored.select_provider"}}</h4>
+        <div class="provider-buttons">
+          {{#each this.availableProviders as |provider|}}
+            <button 
+              class="btn {{if (eq this.selectedProvider provider.value) 'btn-primary' 'btn-default'}}"
+              {{on "click" (fn this.selectProvider provider.value)}}
+            >
+              {{provider.label}}
+            </button>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{#if this.siteSettings.sponsored_require_moderation}}
+      <div class="moderation-notice">
+        <p>{{i18n "sponsored.moderation_notice"}}</p>
+      </div>
+    {{/if}}
+  </div>
+{{/d-modal-body}}
+
+<div class="modal-footer">
+  <button class="btn btn-default" {{on "click" this.closeModal}}>
+    {{i18n "cancel"}}
+  </button>
+  <button 
+    class="btn btn-primary" 
+    disabled={{not this.canProceed}}
+    {{on "click" this.sponsorPost}}
+  >
+    {{#if this.isProcessing}}
+      {{loading-spinner size="small"}} {{i18n "sponsored.processing"}}
+    {{else}}
+      {{i18n "sponsored.sponsor_post"}}
+    {{/if}}
+  </button>
+</div>

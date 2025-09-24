@@ -1,0 +1,67 @@
+en:
+  site_settings:
+    sponsored_posts_enabled: "Enable sponsored posts functionality"
+    sponsored_payments_enabled: "Enable payment processing for sponsored posts"
+    sponsored_use_stripe: "Enable Stripe payment processing"
+    sponsored_use_paypal: "Enable PayPal payment processing"
+    sponsored_label_text: "Sponsored"
+    sponsored_label_tooltip_url: "URL for sponsored post information"
+    sponsored_interval_n: "Show sponsored posts every N posts in topic lists"
+    sponsored_max_in_suggested: "Maximum sponsored posts in suggested topics"
+    sponsored_max_active_per_user: "Maximum active sponsored posts per user"
+    sponsored_min_account_age_days: "Minimum account age in days to sponsor posts"
+    sponsored_require_moderation: "Require moderation approval for sponsored posts"
+    sponsored_allowed_trust_levels: "Trust levels allowed to sponsor posts"
+    sponsored_allowed_groups: "Groups allowed to sponsor posts"
+    sponsored_durations_days: "Available sponsorship durations in days"
+    sponsored_notify_admin_group_names: "Admin groups to notify of new sponsored posts"
+    sponsored_notify_email_enabled: "Send email notifications for sponsored posts"
+    sponsored_business_name: "Business name for payment processing"
+    sponsored_business_address: "Business address for payment processing"
+    sponsored_support_email: "Support email for sponsored posts"
+    sponsored_stats_windows: "Statistics time windows in days"
+    sponsored_export_formats: "Available export formats"
+    sponsored_geo_restrictions: "Geographic restrictions for sponsored posts"
+    
+    # Stripe settings
+    sponsored_stripe_publishable_key: "Stripe publishable key"
+    sponsored_stripe_secret_key: "Stripe secret key"
+    sponsored_stripe_currency: "Stripe currency"
+    
+    # PayPal settings
+    sponsored_paypal_client_id: "PayPal client ID"
+    sponsored_paypal_secret: "PayPal secret"
+    sponsored_paypal_env: "PayPal environment"
+    sponsored_paypal_currency: "PayPal currency"
+
+  sponsored:
+    promote: "Promote this post"
+    label_text: "Sponsored"
+    tooltip: "Why am I seeing this?"
+
+  system_messages:
+    sponsored_post_submitted:
+      title: "New sponsored post submitted"
+      subject_template: "New sponsored post by %{username}"
+      text_body_template: |
+        A new sponsored post has been submitted by %{username}.
+        
+        Post: %{post_url}
+        
+        Please review and approve or reject this sponsored post.
+        
+    sponsored_post_approved:
+      title: "Your sponsored post has been approved"
+      subject_template: "Sponsored post approved"
+      text_body_template: |
+        Your sponsored post has been approved and is now live.
+        
+        Post: %{post_url}
+        
+    sponsored_post_rejected:
+      title: "Your sponsored post has been rejected"
+      subject_template: "Sponsored post rejected"
+      text_body_template: |
+        Your sponsored post has been rejected by the moderation team.
+        
+        Post: %{post_url}
