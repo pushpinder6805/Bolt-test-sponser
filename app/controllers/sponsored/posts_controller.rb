@@ -1,6 +1,6 @@
 module Sponsored
   class PostsController < ::ApplicationController
-    requires_plugin PLUGIN_NAME
+    PLUGIN_NAME = "discourse-sponsored-posts"
     before_action :ensure_logged_in
 
     def create
