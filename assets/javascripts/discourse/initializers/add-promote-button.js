@@ -1,3 +1,5 @@
+console.log("✅ add-promote-button.js loaded");
+
 import { withPluginApi } from "discourse/lib/plugin-api";
 
 export default {
