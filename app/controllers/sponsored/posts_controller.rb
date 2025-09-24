@@ -1,21 +1,25 @@
-# app/controllers/sponsored/posts_controller.rb
 module Sponsored
   class PostsController < ::ApplicationController
+    requires_plugin PLUGIN_NAME
+    before_action :ensure_logged_in
+
     def create
-      render json: { ok: true }
-    end
+      post = Post.find_by(id: params[:post_id])
+      raise Discourse::NotFound unless post
 
-    def stats
-      render json: { impressions: 0, clicks: 0 }
-    end
+      days = params[:days].to_i
+      expires_at = Time.zone.now + days.days
 
-    def index
-      render json: SponsoredPost.all
-    end
+      sp = SponsoredPost.create!(
+        post_id: post.id,
+        user_id: current_user.id,
+        starts_at: Time.zone.now,
+        expires_at: expires_at,
+        active: false
+      )
 
-    def export
-      render plain: "Export not implemented", status: 501
+      # TODO: Redirect to payment (Stripe/PayPal)
+      render json: { success: true, sponsored_post_id: sp.id }
     end
   end
 end
-
