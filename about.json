@@ -1,0 +1,7 @@
+{
+  "name": "discourse-sponsored-posts",
+  "about": "Allow users to sponsor posts with payments via Stripe/PayPal",
+  "version": "0.1",
+  "authors": ["Pushpender"],
+  "url": "https://github.com/pushpinder6805/discourse-sponsored-posts"
+}
