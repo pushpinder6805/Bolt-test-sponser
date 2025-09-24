@@ -11,6 +11,7 @@ enabled_site_setting :sponsored_posts_enabled
 PLUGIN_NAME ||= "discourse-sponsored-posts".freeze
 
 register_asset "stylesheets/common/sponsored.scss"
+register_asset "javascripts/discourse/initializers/add-promote-button.js", :client
 
 after_initialize do
   # Load models and services
@@ -28,13 +29,21 @@ after_initialize do
   [
     "#{Rails.root}/plugins/discourse-sponsored-posts/app/controllers/sponsored/payments_controller",
     "#{Rails.root}/plugins/discourse-sponsored-posts/app/controllers/sponsored/webhooks_controller",
-    "#{Rails.root}/plugins/discourse-sponsored-posts/app/controllers/admin/sponsored_posts_controller"
+    "#{Rails.root}/plugins/discourse-sponsored-posts/app/controllers/admin/sponsored_posts_controller",
+    "#{Rails.root}/plugins/discourse-sponsored-posts/app/controllers/sponsored/posts_controller"
   ].each { |path| load "#{path}.rb" }
+
+  # Register route
+  Discourse::Application.routes.append do
+    namespace :sponsored do
+      post "/create" => "posts#create"
+    end
+  end
 
   # Inject into topic lists (server-side data source for sponsored posts)
   add_to_serializer(:topic_list, :sponsored_pool) do
     return [] unless SiteSetting.sponsored_posts_enabled
-    
+
     SponsoredPost.active_now
       .order("updated_at desc")
       .limit(50)
@@ -49,10 +58,10 @@ after_initialize do
 
   add_to_serializer(:post, :sponsored_data) do
     return nil unless is_sponsored
-    
+
     sp = SponsoredPost.active_now.find_by(post_id: object.id)
     return nil unless sp
-    
+
     SponsoredPostSerializer.new(sp, root: false).as_json
   end
 
