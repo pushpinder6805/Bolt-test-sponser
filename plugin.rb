@@ -62,11 +62,11 @@ after_initialize do
   end
 end
 
-# Register CSP extensions for payment providers
-register_csp_extension do |csp|
-  csp[:script_src] << 'https://js.stripe.com'
-  csp[:script_src] << 'https://www.paypal.com'
-  csp[:connect_src] << 'https://api.stripe.com'
-  csp[:connect_src] << 'https://api.paypal.com'
-  csp[:connect_src] << 'https://api-m.sandbox.paypal.com'
+# ✅ Updated CSP block for Stripe & PayPal
+register_asset_filter do |csp|
+  csp.append("script_src", "https://js.stripe.com")
+  csp.append("script_src", "https://www.paypal.com")
+  csp.append("connect_src", "https://api.stripe.com")
+  csp.append("connect_src", "https://api.paypal.com")
+  csp.append("connect_src", "https://api-m.sandbox.paypal.com")
 end
